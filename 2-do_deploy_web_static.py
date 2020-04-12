@@ -21,9 +21,9 @@ def do_deploy(archive_path):
         put("{}".format(archive_path), "/tmp/{}".format(archive))
         folder = archive.split(".")
         run("mkdir -p {}/{}/".format(path, folder[0]))
-        narchive = '.'.join(folder)
+        new_archive = '.'.join(folder)
         run("tar -xzf /tmp/{} -C {}/{}/"
-            .format(narchive, path, folder[0]))
+            .format(new_archive, path, folder[0]))
         run("rm /tmp/{}".format(archive))
         run("mv {}/{}/web_static/* {}/{}/"
             .format(path, folder[0], path, folder[0]))
